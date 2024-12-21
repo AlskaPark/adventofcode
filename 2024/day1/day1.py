@@ -1,8 +1,7 @@
-import re
-from heapq import heappush, heappop
+def puzzle_1():
+    import re
+    from heapq import heappush, heappop
 
-
-def main():
     l, r = [], []
     with open('input.txt') as f:
         for line in f:
@@ -17,5 +16,25 @@ def main():
     print(acc)
 
 
+def puzzle_2():
+    import re
+    from collections import Counter
+
+    c = Counter()
+    l, r = [], []
+    with open('input.txt') as f:
+        for line in f:
+            lnum, rnum = re.findall(r'(\d+)', line)
+            l.append(int(lnum))
+            c.update({int(rnum): 1})
+
+    sim = 0
+    for lnum in l:
+        sim += lnum * c[lnum]
+
+    print(sim)
+
+
 if __name__ == '__main__':
-    main()
+    # puzzle_1()
+    puzzle_2()
